@@ -8,12 +8,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     const department = document.getElementById("studentDepartment");
     const semester = document.getElementById("studentSemester");
     const courseCount = document.getElementById("enrolledCourseCount");
-
-    const dashboardMessage =
-        document.getElementById("dashboardMessage");
+    const dashboardMessage = document.getElementById("dashboardMessage");
 
     /* ==========================================
-       RESPONSIVE STYLES
+       RESPONSIVE CSS
        ========================================== */
 
     function addResponsiveStyles() {
@@ -27,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         style.textContent = `
 
-            /* ---------- Hamburger button ---------- */
+            /* Hamburger button */
 
             .mobile-menu-toggle {
                 display: none;
@@ -80,6 +78,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 transform: rotate(-45deg);
             }
 
+            /* Mobile drawer background */
+
             .mobile-nav-backdrop {
                 display: none;
                 position: fixed;
@@ -97,12 +97,11 @@ document.addEventListener("DOMContentLoaded", async function () {
                 display: block;
             }
 
-            /* Remove the previous separate image element */
             .mobile-welcome-image {
                 display: none !important;
             }
 
-            /* ---------- Laptop adjustments ---------- */
+            /* Laptop and tablet layouts */
 
             @media (min-width: 761px) and (max-width: 1250px) {
 
@@ -121,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
 
             /* ======================================
-               MOBILE AND TABLET
+               MOBILE LAYOUT
                ====================================== */
 
             @media (max-width: 760px) {
@@ -145,7 +144,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     min-height: 100vh;
                 }
 
-                /* Sidebar drawer */
+                /* Mobile sidebar drawer */
 
                 .sidebar.mobile-drawer {
                     position: fixed !important;
@@ -195,13 +194,13 @@ document.addEventListener("DOMContentLoaded", async function () {
                         visibility 0s;
                 }
 
-                /* Hamburger and page heading */
+                /* ======================================
+                   HEADER ALIGNMENT FIX
+                   Hamburger | Dashboard title | Account
+                   ====================================== */
 
                 .mobile-menu-toggle {
                     display: inline-flex !important;
-                    grid-column: 1;
-                    grid-row: 1;
-                    align-self: center;
                 }
 
                 .main-content {
@@ -212,11 +211,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 .topbar {
                     display: grid !important;
-                    grid-template-columns: 44px minmax(0, 1fr);
-                    grid-template-rows: auto auto;
-                    align-items: center;
-                    justify-content: normal;
-                    gap: 10px 11px;
+
+                    /*
+                     * Column 1: hamburger
+                     * Column 2: heading
+                     * Column 3: account chip
+                     */
+                    grid-template-columns: 44px minmax(0, 1fr) auto !important;
+                    grid-template-rows: auto !important;
+
+                    align-items: center !important;
+                    justify-content: normal !important;
+                    gap: 10px 8px !important;
 
                     width: 100%;
                     min-width: 0;
@@ -224,46 +230,72 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
 
                 .topbar > div:first-of-type {
-                    grid-column: 2;
-                    grid-row: 1;
-                    min-width: 0;
+                    grid-column: 2 !important;
+                    grid-row: 1 !important;
+
+                    align-self: center !important;
+                    min-width: 0 !important;
+                    margin: 0 !important;
                 }
 
                 .topbar h1 {
                     max-width: 100%;
-                    font-size: clamp(22px, 5.5vw, 28px) !important;
-                    line-height: 1.2;
+                    margin-top: 0;
+                    margin-bottom: 0;
+
+                    font-size: clamp(18px, 4.6vw, 26px) !important;
+                    line-height: 1.2 !important;
+
                     overflow-wrap: anywhere;
                 }
 
                 .topbar .account-chip {
-                    grid-column: 2;
-                    grid-row: 2;
-                    justify-self: start;
-                    min-width: 0;
-                    max-width: 100%;
-                    gap: 8px;
-                    padding: 5px 9px;
+                    grid-column: 3 !important;
+                    grid-row: 1 !important;
+
+                    justify-self: end !important;
+                    align-self: center !important;
+
+                    display: flex !important;
+                    align-items: center !important;
+
+                    gap: 6px !important;
+                    min-width: 0 !important;
+                    max-width: 108px !important;
+
+                    margin: 0 !important;
+                    padding: 5px 7px !important;
                 }
 
-                .topbar .account-chip .account-arrow,
-                .topbar .account-text span {
-                    display: none;
+                .topbar .account-chip .account-avatar {
+                    flex: 0 0 30px;
+                    width: 30px;
+                    height: 30px;
                 }
 
                 .topbar .account-text {
-                    min-width: 0;
+                    display: block;
+                    min-width: 0 !important;
+                    max-width: 60px;
+                }
+
+                .topbar .account-text span,
+                .topbar .account-chip .account-arrow {
+                    display: none !important;
                 }
 
                 .topbar .account-chip strong {
-                    max-width: 100%;
-                    overflow-wrap: anywhere;
+                    display: block;
+                    max-width: 60px !important;
+
+                    overflow: hidden !important;
+                    text-overflow: ellipsis !important;
+                    white-space: nowrap !important;
+
+                    font-size: 11px;
                 }
 
-                /* ======================================
-                   WELCOME BANNER
-                   FULL IMAGE WITH TEXT OVERLAY
-                   ====================================== */
+                /* Welcome banner: complete image behind text */
 
                 .welcome-banner {
                     position: relative !important;
@@ -287,13 +319,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                     background-color: #32166b !important;
 
-                    /*
-                     * The gradient is the top layer.
-                     * The image is the second layer.
-                     *
-                     * contain preserves the entire image instead
-                     * of cropping the sides as cover would.
-                     */
                     background-image:
                         linear-gradient(
                             90deg,
@@ -305,6 +330,10 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                     background-repeat: no-repeat, no-repeat !important;
 
+                    /*
+                     * Keep the complete image visible.
+                     * This avoids cropping the sides.
+                     */
                     background-size:
                         100% 100%,
                         contain !important;
@@ -314,8 +343,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                         center center !important;
                 }
 
-                /* Never show the image as a separate row */
-
                 .welcome-banner .mobile-welcome-image {
                     display: none !important;
                 }
@@ -324,12 +351,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                     position: relative !important;
                     z-index: 2;
 
-                    display: block;
+                    display: block !important;
                     width: 100% !important;
                     max-width: 390px !important;
                     min-width: 0;
 
-                    margin: 0;
+                    margin: 0 !important;
                     padding: 0 !important;
 
                     background: transparent !important;
@@ -409,7 +436,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     display: none !important;
                 }
 
-                /* Overview cards */
+                /* Student overview */
 
                 .overview-grid {
                     display: grid !important;
@@ -449,7 +476,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     font-size: 10px;
                 }
 
-                /* Quick access cards */
+                /* Quick links */
 
                 .quick-grid {
                     display: grid !important;
@@ -487,7 +514,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                     overflow-wrap: anywhere;
                 }
 
-                /* Course summary */
+                /* Courses and footer */
 
                 .section-heading {
                     align-items: flex-start;
@@ -535,9 +562,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 }
             }
 
-            /* ======================================
-               SMALL PHONES
-               ====================================== */
+            /* Very small phones */
 
             @media (max-width: 380px) {
 
@@ -549,13 +574,34 @@ document.addEventListener("DOMContentLoaded", async function () {
                     padding: 13px 10px 22px !important;
                 }
 
+                .topbar {
+                    grid-template-columns: 40px minmax(0, 1fr) auto !important;
+                    column-gap: 6px !important;
+                }
+
+                .mobile-menu-toggle {
+                    flex-basis: 40px;
+                    width: 40px;
+                    height: 40px;
+                }
+
+                .topbar h1 {
+                    font-size: clamp(16px, 4.4vw, 20px) !important;
+                }
+
+                .topbar .account-chip {
+                    max-width: 40px !important;
+                    padding: 4px !important;
+                    justify-content: center !important;
+                }
+
+                .topbar .account-text {
+                    display: none !important;
+                }
+
                 .welcome-banner {
                     min-height: 300px !important;
                     padding: 16px 12px !important;
-
-                    background-position:
-                        center center,
-                        center center !important;
                 }
 
                 .welcome-copy h2 {
@@ -596,7 +642,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* ==========================================
-       HAMBURGER MENU
+       MOBILE HAMBURGER NAVIGATION
        ========================================== */
 
     function setupMobileNavigation() {
@@ -610,10 +656,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         addResponsiveStyles();
 
-        /*
-         * Remove the separately inserted image from the
-         * previous version, so only the background remains.
-         */
+        /* Remove any image inserted by an older script */
         document.querySelectorAll(".mobile-welcome-image")
             .forEach(function (image) {
                 image.remove();
@@ -652,17 +695,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         backdrop.type = "button";
         backdrop.className = "mobile-nav-backdrop";
-        backdrop.setAttribute(
-            "aria-label",
-            "Close navigation menu"
-        );
+        backdrop.setAttribute("aria-label", "Close navigation menu");
         backdrop.setAttribute("aria-hidden", "true");
         backdrop.tabIndex = -1;
 
         document.body.appendChild(backdrop);
 
-        const mobileViewport =
-            window.matchMedia("(max-width: 760px)");
+        const mobileViewport = window.matchMedia("(max-width: 760px)");
 
         function openMenu() {
 
@@ -680,10 +719,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             sidebar.inert = false;
 
             toggle.setAttribute("aria-expanded", "true");
-            toggle.setAttribute(
-                "aria-label",
-                "Close navigation menu"
-            );
+            toggle.setAttribute("aria-label", "Close navigation menu");
 
             backdrop.setAttribute("aria-hidden", "false");
             backdrop.tabIndex = 0;
@@ -698,10 +734,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.body.classList.remove("mobile-nav-open");
 
             toggle.setAttribute("aria-expanded", "false");
-            toggle.setAttribute(
-                "aria-label",
-                "Open navigation menu"
-            );
+            toggle.setAttribute("aria-label", "Open navigation menu");
 
             backdrop.setAttribute("aria-hidden", "true");
             backdrop.tabIndex = -1;
@@ -779,7 +812,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* ==========================================
-       DASHBOARD MESSAGE
+       DASHBOARD MESSAGES
        ========================================== */
 
     function showMessage(message) {
@@ -791,7 +824,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* ==========================================
-       PERSONALIZED AVATAR
+       STUDENT AVATAR INITIAL
        ========================================== */
 
     function setStudentInitial(name) {
@@ -806,7 +839,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
     }
 
-    /* Setup responsive navigation before loading data */
+    /* Initialize navigation before loading dashboard data */
     setupMobileNavigation();
 
     /* ==========================================
@@ -823,7 +856,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         });
 
-        /* Redirect expired sessions to the login page */
+        /* Redirect expired sessions to login */
         if (
             response.redirected &&
             new URL(response.url).pathname === "/login.html"
@@ -848,7 +881,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 ? data.fullName.trim()
                 : "Student";
 
-        /* Update the student's name */
+        /* Student names */
+
         if (sidebarName) {
             sidebarName.textContent = name;
         }
@@ -861,10 +895,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             welcomeName.textContent = name + "!";
         }
 
-        /* Update the student's avatar initial */
         setStudentInitial(name);
 
-        /* Update academic information */
+        /* Student information */
+
         if (studentNumber) {
             studentNumber.textContent =
                 data.studentNumber || "Not available";
