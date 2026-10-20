@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentHub | Student Registration</title>
+
+    <link rel="stylesheet" href="/css/register.css">
+    <script src="/js/register.js" defer></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="/" class="logo">Student<span>Hub</span></a>
+        <a href="/" class="back-link">&larr; Back to Home</a>
+    </header>
+
+    <main class="registration-layout">
+
+        <!-- Registration form -->
+        <section class="form-panel">
+
+            <div class="form-heading">
+                <span class="eyebrow">START YOUR JOURNEY</span>
+                <h1>Create your <span>account</span></h1>
+                <p>
+                    Enter your details to create your StudentHub
+                    account and manage your academic profile.
+                </p>
+            </div>
+
+            <div id="formMessage"
+                 class="form-message"
+                 role="status"
+                 aria-live="polite"
+                 hidden>
+            </div>
+
+            <form id="registrationForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group full-width">
+                        <label for="fullName">Full Name</label>
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            maxlength="100"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            maxlength="254"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="studentNumber">Student Number</label>
+                        <input
+                            type="text"
+                            id="studentNumber"
+                            name="studentNumber"
+                            placeholder="e.g. STU1001"
+                            maxlength="30"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter phone number"
+                            maxlength="20"
+                            autocomplete="tel">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input
+                            type="text"
+                            id="department"
+                            name="department"
+                            placeholder="e.g. Computer Science"
+                            maxlength="100"
+                            required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="semester">Current Semester</label>
+                        <select id="semester" name="semester" required>
+                            <option value="" selected disabled>
+                                Select your semester
+                            </option>
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="3">Semester 3</option>
+                            <option value="4">Semester 4</option>
+                            <option value="5">Semester 5</option>
+                            <option value="6">Semester 6</option>
+                            <option value="7">Semester 7</option>
+                            <option value="8">Semester 8</option>
+                            <option value="9">Semester 9</option>
+                            <option value="10">Semester 10</option>
+                            <option value="11">Semester 11</option>
+                            <option value="12">Semester 12</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Minimum 8 characters"
+                            minlength="8"
+                            maxlength="72"
+                            autocomplete="new-password"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            placeholder="Re-enter password"
+                            minlength="8"
+                            maxlength="72"
+                            autocomplete="new-password"
+                            required>
+                    </div>
+
+                </div>
+
+                <p class="form-hint">
+                    Your password will be securely hashed before it is
+                    stored in the database.
+                </p>
+
+                <button type="submit" id="submitButton" class="submit-button">
+                    Create Student Account
+                    <span>&rarr;</span>
+                </button>
+
+            </form>
+
+            <p class="login-prompt">
+                Already have an account?
+                <a href="/login.html">Log in</a>
+            </p>
+
+        </section>
+
+        <!-- Informational panel -->
+        <aside class="side-panel">
+
+            <div class="decor decor-one"></div>
+            <div class="decor decor-two"></div>
+
+            <div class="side-content">
+                <div class="graduation-icon">&#127891;</div>
+
+                <span class="side-eyebrow">WELCOME TO STUDENTHUB</span>
+
+                <h2>Your academic journey starts here.</h2>
+
+                <p>
+                    Create your account and keep your student information
+                    and course enrollments organized in one place.
+                </p>
+
+                <div class="benefit">
+                    <span class="benefit-check">&#10003;</span>
+                    <div>
+                        <strong>Your own student profile</strong>
+                        <p>Manage your personal details.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span class="benefit-check">&#10003;</span>
+                    <div>
+                        <strong>Course management</strong>
+                        <p>View and manage your enrollments.</p>
+                    </div>
+                </div>
+
+                <div class="benefit">
+                    <span class="benefit-check">&#10003;</span>
+                    <div>
+                        <strong>Secure account</strong>
+                        <p>Protect your account with a password.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="side-footer">
+                Your education. Your progress. Your future.
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="page-footer">
+        &copy; 2026 StudentHub. Built for students.
+    </footer>
+
+</body>
+</html>

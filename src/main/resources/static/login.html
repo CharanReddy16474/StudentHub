@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudentHub | Login</title>
+
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/login.js" defer></script>
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="/" class="logo">Student<span>Hub</span></a>
+        <a href="/" class="back-link">&larr; Back to Home</a>
+    </header>
+
+    <main class="login-layout">
+
+        <section class="login-panel">
+
+            <div class="login-heading">
+                <span class="eyebrow">WELCOME BACK</span>
+                <h1>Sign in to <span>StudentHub</span></h1>
+                <p>
+                    Log in to access your student dashboard,
+                    profile and courses.
+                </p>
+            </div>
+
+            <div id="loginMessage"
+                 class="message"
+                 role="status"
+                 aria-live="polite"
+                 hidden>
+            </div>
+
+            <form id="loginForm" action="/login" method="post">
+
+                <input
+                    type="hidden"
+                    id="csrfToken"
+                    name="_csrf"
+                    value="">
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your registered email"
+                        autocomplete="username"
+                        maxlength="254"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <div class="password-wrapper">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="toggle-password"
+                            aria-label="Show password">
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="submit-button"
+                    disabled>
+                    Sign In <span>&rarr;</span>
+                </button>
+
+            </form>
+
+            <p class="register-prompt">
+                Don't have an account?
+                <a href="/register.html">Create an account</a>
+            </p>
+
+        </section>
+
+        <aside class="welcome-panel">
+
+            <div class="circle circle-one"></div>
+            <div class="circle circle-two"></div>
+
+            <div class="welcome-content">
+                <div class="graduation-icon">&#127891;</div>
+
+                <span class="side-eyebrow">YOUR STUDENT PORTAL</span>
+
+                <h2>Your journey continues here.</h2>
+
+                <p>
+                    Keep your student information organized,
+                    explore your courses and manage your
+                    academic profile from one place.
+                </p>
+
+                <div class="benefit">
+                    <span>&#10003;</span>
+                    <p>Access your personal profile</p>
+                </div>
+
+                <div class="benefit">
+                    <span>&#10003;</span>
+                    <p>View your course enrollments</p>
+                </div>
+
+                <div class="benefit">
+                    <span>&#10003;</span>
+                    <p>Manage your student account</p>
+                </div>
+            </div>
+
+            <div class="welcome-footer">
+                Your education. Your progress. Your future.
+            </div>
+
+        </aside>
+
+    </main>
+
+    <footer class="page-footer">
+        &copy; 2026 StudentHub. Built for students.
+    </footer>
+
+</body>
+</html>

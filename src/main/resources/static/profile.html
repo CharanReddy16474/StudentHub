@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub | My Profile</title>
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="/js/profile.js?v=20261020-reset-fix2" defer></script>
+</head>
+<body>
+<div class="app-layout">
+    <aside class="sidebar">
+        <a href="/" class="brand">
+            <span class="brand-icon">S</span>
+            <span>Student<span class="brand-accent">Hub</span></span>
+        </a>
+
+        <div class="student-mini-profile">
+            <div class="avatar" id="sidebarAvatar">S</div>
+            <div class="mini-profile-text">
+                <strong id="sidebarStudentName">Student</strong>
+                <span>Student Account</span>
+            </div>
+        </div>
+
+        <p class="nav-label">WORKSPACE</p>
+
+        <nav class="sidebar-nav">
+            <a href="/dashboard.html" class="nav-item">
+                <span class="nav-icon">&#9638;</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="/profile.html" class="nav-item active">
+                <span class="nav-icon">&#9817;</span>
+                <span>My Profile</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-info">
+                <span class="sidebar-info-icon">&#10022;</span>
+                <div>
+                    <strong>Your learning space</strong>
+                    <p>Everything in one place.</p>
+                </div>
+            </div>
+
+            <form id="logoutForm" action="/logout" method="post">
+                <input type="hidden" name="_csrf" id="logoutCsrfToken">
+
+                <button type="submit" id="logoutButton"
+                        class="nav-item logout-item" disabled>
+                    <span class="nav-icon">&#8689;</span>
+                    <span>Log out</span>
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">STUDENT PORTAL</p>
+                <h1>My Profile</h1>
+                <p class="page-description">
+                    Manage your personal information and courses.
+                </p>
+            </div>
+
+            <a href="/dashboard.html" class="back-dashboard">
+                &larr; Dashboard
+            </a>
+        </header>
+
+        <div id="profileMessage"
+             class="message"
+             role="status"
+             aria-live="polite"
+             hidden>
+        </div>
+
+        <!-- Profile summary -->
+        <section class="profile-summary card">
+            <div class="large-avatar" id="profileAvatar">S</div>
+
+            <div class="summary-content">
+                <p class="eyebrow">MY STUDENT ACCOUNT</p>
+                <h2 id="profileHeaderName">Loading profile...</h2>
+                <p id="profileHeaderDepartment">
+                    Loading academic information...
+                </p>
+            </div>
+
+            <a href="#edit-profile" class="primary-button">
+                Edit Profile
+            </a>
+        </section>
+
+        <!-- Profile details -->
+        <section class="content-section" id="details">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">PERSONAL INFORMATION</p>
+                    <h2>Profile Details</h2>
+                </div>
+                <span class="section-note">Your account information</span>
+            </div>
+
+            <div class="details-grid card">
+                <div class="detail-item">
+                    <span class="detail-label">Full Name</span>
+                    <strong id="profileFullName">Loading...</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Email Address</span>
+                    <strong id="profileEmail">Loading...</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Student Number</span>
+                    <strong id="profileStudentNumber">Loading...</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Phone Number</span>
+                    <strong id="profilePhone">Loading...</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Department</span>
+                    <strong id="profileDepartment">Loading...</strong>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Current Semester</span>
+                    <strong id="profileSemester">Loading...</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Edit profile -->
+        <section class="content-section" id="edit-profile">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">UPDATE YOUR INFORMATION</p>
+                    <h2>Edit Profile</h2>
+                </div>
+            </div>
+
+            <div class="card form-card">
+                <p class="section-description">
+                    You can update your name and phone number.
+                    Your registered email and academic details are read-only.
+                </p>
+
+                <form id="editProfileForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="editFullName">Full Name</label>
+                            <input type="text"
+                                   id="editFullName"
+                                   name="fullName"
+                                   maxlength="100"
+                                   autocomplete="name"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editPhone">Phone Number</label>
+                            <input type="tel"
+                                   id="editPhone"
+                                   name="phone"
+                                   maxlength="20"
+                                   autocomplete="tel">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editEmail">Email Address</label>
+                            <input type="email"
+                                   id="editEmail"
+                                   name="email"
+                                   readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editStudentNumber">Student Number</label>
+                            <input type="text"
+                                   id="editStudentNumber"
+                                   name="studentNumber"
+                                   readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit"
+                                id="saveProfileButton"
+                                class="primary-button">
+                            Save Changes
+                        </button>
+
+                        <button type="button"
+                                id="resetProfileButton"
+                                class="secondary-button"
+                                onclick="window.resetStudentHubProfileForm()">
+                            Reset Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Change password -->
+        <section class="content-section" id="password">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ACCOUNT PROTECTION</p>
+                    <h2>Change Password</h2>
+                </div>
+            </div>
+
+            <div class="card form-card">
+                <p class="section-description">
+                    Enter your current password and choose a new password
+                    to keep your account secure.
+                </p>
+
+                <form id="changePasswordForm">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="currentPassword">
+                                Current Password
+                            </label>
+                            <input type="password"
+                                   id="currentPassword"
+                                   name="currentPassword"
+                                   autocomplete="current-password"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password"
+                                   id="newPassword"
+                                   name="newPassword"
+                                   minlength="8"
+                                   maxlength="72"
+                                   autocomplete="new-password"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmNewPassword">
+                                Confirm New Password
+                            </label>
+                            <input type="password"
+                                   id="confirmNewPassword"
+                                   name="confirmNewPassword"
+                                   minlength="8"
+                                   maxlength="72"
+                                   autocomplete="new-password"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit"
+                                id="changePasswordButton"
+                                class="primary-button">
+                            Update Password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Available courses -->
+        <section class="content-section" id="available-courses">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">EXPLORE YOUR LEARNING</p>
+                    <h2>Available Courses</h2>
+                </div>
+
+                <button type="button"
+                        id="refreshCoursesButton"
+                        class="secondary-button">
+                    Refresh Courses
+                </button>
+            </div>
+
+            <div id="availableCoursesMessage"
+                 class="section-message"
+                 role="status">
+                Loading available courses...
+            </div>
+
+            <div id="availableCoursesList" class="courses-grid"></div>
+        </section>
+
+        <!-- My enrolled courses -->
+        <section class="content-section" id="courses">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR LEARNING SPACE</p>
+                    <h2>My Courses</h2>
+                </div>
+            </div>
+
+            <div id="myCoursesMessage"
+                 class="section-message"
+                 role="status">
+                Loading your courses...
+            </div>
+
+            <div id="myCoursesList" class="courses-grid"></div>
+        </section>
+
+        <footer class="page-footer">
+            <span>StudentHub</span>
+            <span>Your education. Your progress. Your future.</span>
+        </footer>
+    </main>
+</div>
+</body>
+</html>
