@@ -1,22 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>StudentHub | Dashboard</title>
 
-    <link rel="stylesheet" href="/css/dashboard.css?v=20261020-welcome1">
-    <script src="/js/dashboard.js?v=20261020-welcome1" defer></script>
+    <link rel="stylesheet" href="/css/dashboard.css?v=20261020-hamburger2">
+    <script src="/js/dashboard.js?v=20261020-hamburger2" defer></script>
 </head>
 
 <body>
-
 <div class="app-layout">
 
     <!-- Sidebar -->
     <aside class="sidebar">
-
         <a href="/" class="brand">
             <span class="brand-icon">S</span>
             <span>Student<span class="brand-accent">Hub</span></span>
@@ -24,7 +22,6 @@
 
         <div class="student-mini-profile">
             <div class="avatar">S</div>
-
             <div class="mini-profile-text">
                 <strong id="sidebarStudentName">Student</strong>
                 <span>Student Account</span>
@@ -46,10 +43,8 @@
         </nav>
 
         <div class="sidebar-bottom">
-
             <div class="sidebar-info">
                 <span class="sidebar-info-icon">&#10022;</span>
-
                 <div>
                     <strong>Your learning space</strong>
                     <p>Everything in one place.</p>
@@ -57,7 +52,6 @@
             </div>
 
             <form id="logoutForm" action="/logout" method="post">
-
                 <input
                     type="hidden"
                     name="_csrf"
@@ -69,13 +63,10 @@
                     id="logoutButton"
                     class="nav-item logout-item"
                     disabled>
-
                     <span class="nav-icon">&#8689;</span>
                     <span>Log out</span>
                 </button>
-
             </form>
-
         </div>
     </aside>
 
@@ -83,32 +74,24 @@
     <main class="main-content">
 
         <header class="topbar">
-
             <div>
                 <p class="eyebrow">STUDENT PORTAL</p>
                 <h1>Dashboard</h1>
             </div>
 
             <a href="/profile.html" class="account-chip">
-
                 <div class="account-avatar">S</div>
-
                 <div class="account-text">
                     <strong id="topbarStudentName">Student</strong>
                     <span>My Account</span>
                 </div>
-
                 <span class="account-arrow">&#8964;</span>
-
             </a>
-
         </header>
 
-        <!-- Welcome banner with supplied background image -->
+        <!-- Welcome banner -->
         <section class="welcome-banner">
-
             <div class="welcome-copy">
-
                 <span class="welcome-tag">WELCOME TO STUDENTHUB</span>
 
                 <h2>
@@ -124,14 +107,22 @@
                 <a href="/profile.html" class="banner-button">
                     View My Profile <span>&rarr;</span>
                 </a>
-
             </div>
 
+            <div class="welcome-art" aria-hidden="true">
+                <div class="art-circle circle-one"></div>
+                <div class="art-circle circle-two"></div>
+                <div class="cap-card">
+                    <span class="cap-emoji">&#127891;</span>
+                </div>
+                <span class="art-star star-one">&#10022;</span>
+                <span class="art-star star-two">&#10023;</span>
+                <span class="art-dot"></span>
+            </div>
         </section>
 
         <!-- Student overview -->
         <section class="overview-section">
-
             <div class="section-heading">
                 <div>
                     <p class="eyebrow">YOUR ACADEMIC INFORMATION</p>
@@ -144,14 +135,11 @@
                 class="dashboard-message"
                 role="status"
                 aria-live="polite"
-                hidden>
-            </p>
+                hidden></p>
 
             <div class="overview-grid">
-
                 <article class="overview-card">
                     <div class="overview-icon student-icon">&#9817;</div>
-
                     <div>
                         <span class="overview-label">Student Number</span>
                         <strong id="studentNumber">Loading...</strong>
@@ -160,7 +148,6 @@
 
                 <article class="overview-card">
                     <div class="overview-icon department-icon">&#9673;</div>
-
                     <div>
                         <span class="overview-label">Department</span>
                         <strong id="studentDepartment">Loading...</strong>
@@ -169,7 +156,6 @@
 
                 <article class="overview-card">
                     <div class="overview-icon semester-icon">&#128218;</div>
-
                     <div>
                         <span class="overview-label">Current Semester</span>
                         <strong id="studentSemester">Loading...</strong>
@@ -178,69 +164,56 @@
 
                 <article class="overview-card">
                     <div class="overview-icon courses-icon">&#9776;</div>
-
                     <div>
                         <span class="overview-label">Enrolled Courses</span>
                         <strong id="enrolledCourseCount">0</strong>
                     </div>
                 </article>
-
             </div>
         </section>
 
         <!-- Quick access -->
         <section class="quick-section">
-
             <div class="section-heading">
                 <div>
                     <p class="eyebrow">YOUR STUDENT SPACE</p>
                     <h2>Quick Access</h2>
                 </div>
-
                 <span class="section-note">Manage your student life</span>
             </div>
 
             <div class="quick-grid">
-
                 <a href="/profile.html#details" class="quick-card">
                     <div class="quick-icon profile-icon">&#9817;</div>
-
                     <div class="quick-card-content">
                         <h3>My Profile</h3>
                         <p>View your personal and academic information.</p>
                     </div>
-
                     <span class="card-arrow">&rarr;</span>
                 </a>
 
                 <a href="/profile.html#courses" class="quick-card">
                     <div class="quick-icon courses-icon">&#9776;</div>
-
                     <div class="quick-card-content">
                         <h3>My Courses</h3>
                         <p>View and manage your course enrollments.</p>
                     </div>
-
                     <span class="card-arrow">&rarr;</span>
                 </a>
 
                 <a href="/profile.html#password" class="quick-card">
                     <div class="quick-icon security-icon">&#9830;</div>
-
                     <div class="quick-card-content">
                         <h3>Account Security</h3>
                         <p>Change your password inside My Profile.</p>
                     </div>
-
                     <span class="card-arrow">&rarr;</span>
                 </a>
-
             </div>
         </section>
 
         <!-- Course information -->
         <section class="courses-section">
-
             <div class="section-heading">
                 <div>
                     <p class="eyebrow">YOUR LEARNING</p>
@@ -253,12 +226,10 @@
             </div>
 
             <div class="course-summary">
-
                 <div class="course-summary-icon">&#128218;</div>
 
                 <div class="course-summary-content">
                     <h3>Keep your learning organized</h3>
-
                     <p>
                         View your enrolled courses and manage your
                         enrollments in the My Courses section inside My Profile.
@@ -268,7 +239,6 @@
                 <a href="/profile.html#courses" class="outline-button">
                     View Courses
                 </a>
-
             </div>
         </section>
 
@@ -276,14 +246,12 @@
             <span>StudentHub</span>
             <span>Your education. Your progress. Your future.</span>
         </footer>
-
     </main>
 </div>
 
-<!-- Get CSRF token for the logout POST request -->
+<!-- Obtain the CSRF token required for the logout POST request -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
     const tokenInput = document.getElementById("logoutCsrfToken");
     const logoutButton = document.getElementById("logoutButton");
 
@@ -309,7 +277,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Logout preparation failed:", error);
         logoutButton.disabled = true;
     });
-
 });
 </script>
 
