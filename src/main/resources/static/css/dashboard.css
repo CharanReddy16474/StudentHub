@@ -1,22 +1,40 @@
-/* ==========================================
-   STUDENTHUB DASHBOARD
-   ========================================== */
 
-* {
-    margin: 0;
-    padding: 0;
+/* =====================================================
+   STUDENTHUB - RESPONSIVE DASHBOARD
+   Supports desktop, laptop, tablet and mobile devices
+   ===================================================== */
+
+:root {
+    --purple: #7848d8;
+    --purple-dark: #56309d;
+    --purple-light: #f0e9ff;
+    --text: #27213d;
+    --muted: #89859b;
+    --background: #faf9fd;
+    --surface: #ffffff;
+    --border: #eeeaf5;
+    --radius: 14px;
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 24px;
 }
 
 body {
+    margin: 0;
+    min-width: 320px;
     font-family: Arial, Helvetica, sans-serif;
-    color: #27213d;
-    background-color: #faf9fd;
+    color: var(--text);
+    background: var(--background);
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 a {
@@ -24,65 +42,86 @@ a {
     text-decoration: none;
 }
 
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
 button {
-    font-family: inherit;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
 }
 
 [hidden] {
     display: none !important;
 }
 
-/* ==========================================
-   MAIN LAYOUT
-   ========================================== */
+img,
+svg,
+video {
+    max-width: 100%;
+}
 
 .app-layout {
     display: flex;
     min-height: 100vh;
+    min-width: 0;
 }
 
-/* ==========================================
-   STICKY SIDEBAR
-   ========================================== */
+/* ================= SIDEBAR ================= */
 
 .sidebar {
-    width: 245px;
-    min-width: 245px;
-    display: flex;
-    flex-direction: column;
-    padding: 27px 18px 20px;
-    color: #ffffff;
-    background: linear-gradient(180deg, #8752df, #6840ba);
-
     position: sticky;
     top: 0;
     align-self: flex-start;
-    height: 100vh;
-    overflow-y: auto;
     z-index: 1000;
+
+    display: flex;
+    flex: 0 0 245px;
+    flex-direction: column;
+
+    width: 245px;
+    min-width: 245px;
+    height: 100vh;
+
+    padding: 27px 18px 20px;
+    overflow-y: auto;
+
+    color: #ffffff;
+    background: linear-gradient(180deg, #8752df, #6840ba);
 }
 
 .brand {
     display: flex;
     align-items: center;
+    min-width: 0;
     padding: 0 8px;
+
     color: #ffffff;
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: -0.5px;
 }
 
 .brand-icon {
-    width: 36px;
-    height: 36px;
     display: inline-flex;
-    flex-shrink: 0;
+    flex: 0 0 36px;
     align-items: center;
     justify-content: center;
+
+    width: 36px;
+    height: 36px;
     margin-right: 11px;
+
     border-radius: 11px;
-    background-color: #ffffff;
-    color: #56309d;
+    background: #ffffff;
+    color: var(--purple-dark);
     font-size: 21px;
 }
 
@@ -93,33 +132,37 @@ button {
 .student-mini-profile {
     display: flex;
     align-items: center;
+    min-width: 0;
+
     padding: 23px 7px 25px;
     margin-top: 24px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
 .avatar {
-    width: 40px;
-    height: 40px;
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 40px;
     align-items: center;
     justify-content: center;
+
+    width: 40px;
+    height: 40px;
     margin-right: 11px;
+
     border-radius: 50%;
-    background-color: #ffffff;
-    color: #56309d;
-    font-weight: bold;
+    background: #ffffff;
+    color: var(--purple-dark);
+    font-weight: 700;
 }
 
 .mini-profile-text {
     min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .student-mini-profile strong {
     display: block;
     font-size: 13px;
-    overflow-wrap: anywhere;
 }
 
 .student-mini-profile span {
@@ -133,59 +176,73 @@ button {
     margin: 27px 10px 11px;
     color: #ddcef8;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: 1.5px;
 }
 
 .sidebar-nav {
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .nav-item {
-    width: 100%;
     display: flex;
     align-items: center;
-    padding: 13px 12px;
-    margin-bottom: 8px;
-    border: none;
+    gap: 5px;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    padding: 12px;
+
+    margin: 0 0 8px;
+    border: 0;
     border-radius: 9px;
-    background-color: transparent;
+
+    background: transparent;
     color: #eadfff;
+
     font-size: 13px;
     text-align: left;
     cursor: pointer;
+    transition: background-color .2s, color .2s;
 }
 
 .nav-item:hover,
 .nav-item.active {
-    background-color: #ffffff;
+    background: #ffffff;
     color: #7141bd;
 }
 
 .nav-icon {
-    width: 28px;
-    display: inline-block;
-    flex-shrink: 0;
-    text-align: center;
+    display: inline-flex;
+    flex: 0 0 28px;
+    align-items: center;
+    justify-content: center;
     font-size: 19px;
 }
 
 .sidebar-bottom {
     margin-top: auto;
+    min-width: 0;
 }
 
 .sidebar-info {
     display: flex;
     align-items: center;
+    min-width: 0;
+
     padding: 14px 10px;
     margin-bottom: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.17);
+
+    border: 1px solid rgba(255,255,255,0.17);
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.08);
+    background: rgba(255,255,255,0.08);
 }
 
 .sidebar-info-icon {
+    flex: 0 0 auto;
     margin-right: 10px;
     color: #f1e8ff;
     font-size: 23px;
@@ -196,13 +253,18 @@ button {
 }
 
 .sidebar-info p {
-    margin-top: 3px;
+    margin: 3px 0 0;
     color: #e1d3fb;
     font-size: 10px;
 }
 
 #logoutForm {
+    width: 100%;
     margin: 0;
+}
+
+#logoutForm input[type="hidden"] {
+    display: none;
 }
 
 .logout-item {
@@ -210,61 +272,70 @@ button {
 }
 
 .logout-item:disabled {
-    opacity: 0.6;
-    cursor: wait;
+    opacity: .6;
 }
 
-/* ==========================================
-   MAIN CONTENT
-   ========================================== */
+/* ================= MAIN CONTENT ================= */
 
 .main-content {
-    flex: 1;
+    flex: 1 1 auto;
+    width: 0;
     min-width: 0;
-    padding: 31px 38px 20px;
+    padding: clamp(22px, 3vw, 42px);
 }
 
 .topbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 18px;
+    flex-wrap: wrap;
+    gap: 16px;
+
     margin-bottom: 27px;
 }
 
 .eyebrow {
-    color: #7848d8;
+    margin: 0;
+    color: var(--purple);
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: 1.6px;
+    overflow-wrap: anywhere;
 }
 
 .topbar h1 {
-    margin-top: 3px;
-    font-size: 27px;
+    margin: 4px 0 0;
+    font-size: clamp(23px, 2vw, 29px);
+    line-height: 1.25;
 }
 
 .account-chip {
     display: flex;
     align-items: center;
+    gap: 10px;
+    min-width: 0;
+    max-width: 100%;
+
     padding: 7px 11px;
-    border: 1px solid #eeeaf5;
+    border: 1px solid var(--border);
     border-radius: 12px;
-    background-color: #ffffff;
+
+    background: #ffffff;
 }
 
 .account-avatar {
-    width: 36px;
-    height: 36px;
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 36px;
     align-items: center;
     justify-content: center;
-    margin-right: 10px;
+
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    background-color: #f0e9ff;
-    color: #56309d;
-    font-weight: bold;
+
+    background: var(--purple-light);
+    color: var(--purple-dark);
+    font-weight: 700;
 }
 
 .account-text {
@@ -273,73 +344,57 @@ button {
 
 .account-chip strong {
     display: block;
-    font-size: 12px;
     overflow-wrap: anywhere;
+    font-size: 12px;
 }
 
 .account-text span {
     display: block;
     margin-top: 2px;
-    color: #89859b;
+    color: var(--muted);
     font-size: 10px;
 }
 
 .account-arrow {
-    margin-left: 12px;
-    color: #89859b;
+    margin-left: 4px;
+    color: var(--muted);
 }
 
-/* ==========================================
-   WELCOME BANNER WITH YOUR BACKGROUND IMAGE
-   ========================================== */
+/* ================= WELCOME BANNER ================= */
 
 .welcome-banner {
     position: relative;
     isolation: isolate;
+
     display: flex;
     align-items: center;
 
-    min-height: 310px;
-    padding: 42px 45px;
+    width: 100%;
+    min-width: 0;
+    min-height: clamp(300px, 27vw, 390px);
+
+    padding: clamp(24px, 4vw, 48px);
     overflow: hidden;
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255,255,255,.15);
     border-radius: 18px;
 
     color: #ffffff;
     background-color: #32166b;
-
     background-image:
         linear-gradient(
             90deg,
-            rgba(28, 13, 66, 0.18) 0%,
-            rgba(28, 13, 66, 0.12) 45%,
-            rgba(28, 13, 66, 0.02) 100%
+            rgba(24,12,56,.60) 0%,
+            rgba(24,12,56,.35) 52%,
+            rgba(24,12,56,.08) 100%
         ),
         url("/images/studenthub-welcome.png");
 
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
-    background-position: center center;
 
-    box-shadow: 0 12px 30px rgba(78, 45, 132, 0.16);
-}
-
-/* Subtle overlay keeps the greeting readable. */
-
-.welcome-banner::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-
-    background: linear-gradient(
-        90deg,
-        rgba(24, 12, 56, 0.16) 0%,
-        rgba(24, 12, 56, 0.07) 45%,
-        transparent 75%
-    );
+    box-shadow: 0 12px 30px rgba(78,45,132,.16);
 }
 
 .welcome-copy {
@@ -347,24 +402,24 @@ button {
     z-index: 1;
     width: 62%;
     max-width: 570px;
+    min-width: 0;
 }
 
 .welcome-tag {
     display: inline-block;
     color: #f0e4ff;
     font-size: 10px;
-    font-weight: bold;
+    font-weight: 700;
     letter-spacing: 1.7px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .welcome-copy h2 {
-    margin-top: 15px;
-    font-size: clamp(29px, 3vw, 39px);
-    line-height: 1.2;
+    margin: 15px 0 0;
     color: #ffffff;
-    text-shadow: 0 3px 14px rgba(15, 7, 35, 0.35);
+    font-size: clamp(28px, 3vw, 42px);
+    line-height: 1.2;
     overflow-wrap: anywhere;
+    text-shadow: 0 3px 14px rgba(15,7,35,.35);
 }
 
 .welcome-copy h2 span {
@@ -373,34 +428,40 @@ button {
 
 .welcome-copy p {
     max-width: 420px;
-    margin-top: 15px;
+    margin: 15px 0 0;
+
     color: #ffffff;
-    font-size: 13px;
+    font-size: clamp(12px, 1vw, 14px);
     line-height: 1.8;
-    text-shadow: 0 2px 10px rgba(15, 7, 35, 0.55);
+    overflow-wrap: anywhere;
+
+    text-shadow: 0 2px 10px rgba(15,7,35,.55);
 }
 
 .banner-button {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
+    gap: 12px;
+
+    max-width: 100%;
     margin-top: 23px;
     padding: 12px 18px;
 
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.7);
+    border-radius: 9px;
 
-    background-color: #ffffff;
+    background: #ffffff;
     color: #6e3bbd;
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
 
-    box-shadow: 0 6px 18px rgba(20, 10, 40, 0.18);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 6px 18px rgba(20,10,40,.18);
+    transition: transform .2s, background-color .2s;
 }
 
 .banner-button:hover {
-    background-color: #f3ecff;
+    background: #f3ecff;
     transform: translateY(-2px);
 }
 
@@ -408,137 +469,133 @@ button {
     font-size: 17px;
 }
 
-/* ==========================================
-   SECTION HEADINGS
-   ========================================== */
+/* ================= SECTION HEADINGS ================= */
 
 .overview-section,
 .quick-section,
 .courses-section {
-    margin-top: 32px;
+    margin-top: clamp(24px, 3vw, 36px);
 }
 
 .section-heading {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 14px;
+    flex-wrap: wrap;
+    gap: 12px;
+
     margin-bottom: 17px;
 }
 
 .section-heading h2 {
-    margin-top: 4px;
-    font-size: 21px;
+    margin: 5px 0 0;
+    font-size: clamp(19px, 2vw, 23px);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
 }
 
 .section-note {
-    color: #89859b;
+    color: var(--muted);
     font-size: 11px;
 }
 
-/* ==========================================
-   STUDENT OVERVIEW CARDS
-   ========================================== */
+/* ================= OVERVIEW CARDS ================= */
 
 .overview-grid {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -7px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
 }
 
 .overview-card {
-    flex: 1 1 170px;
-    min-width: 0;
-
     display: flex;
     align-items: center;
+    gap: 12px;
 
-    padding: 17px 14px;
-    margin: 7px;
+    min-width: 0;
+    padding: 18px 15px;
 
-    border: 1px solid #eeeaf5;
+    border: 1px solid var(--border);
     border-radius: 12px;
-    background-color: #ffffff;
 
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #ffffff;
+    transition: transform .2s, box-shadow .2s;
 }
 
 .overview-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 7px 18px rgba(52, 38, 78, 0.05);
+    box-shadow: 0 7px 18px rgba(52,38,78,.06);
 }
 
 .overview-icon {
-    width: 42px;
-    height: 42px;
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 42px;
     align-items: center;
     justify-content: center;
-    margin-right: 12px;
+
+    width: 42px;
+    height: 42px;
     border-radius: 11px;
     font-size: 20px;
 }
 
 .student-icon {
     color: #7442c0;
-    background-color: #f0e8ff;
+    background: #f0e8ff;
 }
 
 .department-icon {
     color: #247d77;
-    background-color: #e3f7f2;
+    background: #e3f7f2;
 }
 
 .semester-icon {
     color: #bf7b21;
-    background-color: #fff2df;
+    background: #fff2df;
 }
 
-.overview-icon.courses-icon {
+.courses-icon {
     color: #3568cc;
-    background-color: #e7efff;
+    background: #e7efff;
 }
 
 .overview-card > div:last-child {
     min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .overview-label {
     display: block;
-    margin-bottom: 7px;
-    color: #89859b;
+    margin-bottom: 6px;
+    color: var(--muted);
     font-size: 10px;
 }
 
 .overview-card strong {
     display: block;
-    color: #56309d;
+    color: var(--purple-dark);
     font-size: 14px;
     overflow-wrap: anywhere;
 }
 
 .dashboard-message {
     padding: 10px 13px;
-    margin-bottom: 12px;
+    margin: 0 0 12px;
+
     border-radius: 8px;
     color: #a12b2b;
-    background-color: #fff1f1;
+    background: #fff1f1;
+
     font-size: 12px;
+    overflow-wrap: anywhere;
 }
 
-.dashboard-message[hidden] {
-    display: none !important;
-}
-
-/* ==========================================
-   QUICK ACCESS CARDS
-   ========================================== */
+/* ================= QUICK ACCESS ================= */
 
 .quick-grid {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -8px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
 }
 
 .quick-card {
@@ -546,67 +603,68 @@ button {
 
     display: flex;
     align-items: flex-start;
-    flex: 1 1 200px;
+    gap: 13px;
+
     min-width: 0;
+    padding: 21px 18px;
 
-    padding: 20px 17px;
-    margin: 8px;
-
-    border: 1px solid #eeeaf5;
+    border: 1px solid var(--border);
     border-radius: 13px;
-    background-color: #ffffff;
+    background: #ffffff;
 
-    transition: border-color 0.2s ease, box-shadow 0.2s ease,
-        transform 0.2s ease;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
 }
 
 .quick-card:hover {
     border-color: #d9c8ff;
-    box-shadow: 0 8px 20px rgba(64, 39, 107, 0.07);
+    box-shadow: 0 8px 20px rgba(64,39,107,.07);
     transform: translateY(-2px);
 }
 
 .quick-icon {
-    width: 42px;
-    height: 42px;
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 42px;
     align-items: center;
     justify-content: center;
-    margin-right: 13px;
+
+    width: 42px;
+    height: 42px;
     border-radius: 11px;
     font-size: 22px;
 }
 
 .profile-icon {
     color: #7442c0;
-    background-color: #f0e8ff;
+    background: #f0e8ff;
 }
 
 .quick-icon.courses-icon {
     color: #247d77;
-    background-color: #e3f7f2;
+    background: #e3f7f2;
 }
 
 .security-icon {
     color: #bf7b21;
-    background-color: #fff2df;
+    background: #fff2df;
 }
 
 .quick-card-content {
     min-width: 0;
-    padding-right: 8px;
+    padding-right: 12px;
 }
 
 .quick-card h3 {
     margin: 2px 0 7px;
     font-size: 13px;
+    overflow-wrap: anywhere;
 }
 
 .quick-card p {
-    color: #89859b;
+    margin: 0;
+    color: var(--muted);
     font-size: 11px;
     line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
 .card-arrow {
@@ -617,14 +675,12 @@ button {
     font-size: 16px;
 }
 
-/* ==========================================
-   COURSE MANAGEMENT
-   ========================================== */
+/* ================= COURSE SUMMARY ================= */
 
 .text-link {
-    color: #7848d8;
+    color: var(--purple);
     font-size: 12px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .text-link span {
@@ -635,252 +691,342 @@ button {
 .course-summary {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 17px;
+
+    min-width: 0;
     padding: 22px;
 
-    border: 1px solid #eeeaf5;
+    border: 1px solid var(--border);
     border-radius: 14px;
-    background-color: #ffffff;
+    background: #ffffff;
 }
 
 .course-summary-icon {
-    width: 50px;
-    height: 50px;
     display: flex;
-    flex-shrink: 0;
+    flex: 0 0 50px;
     align-items: center;
     justify-content: center;
-    margin-right: 17px;
+
+    width: 50px;
+    height: 50px;
     border-radius: 13px;
-    color: #7848d8;
-    background-color: #f0e9ff;
+
+    color: var(--purple);
+    background: var(--purple-light);
     font-size: 25px;
 }
 
 .course-summary-content {
-    flex: 1;
+    flex: 1 1 auto;
     min-width: 0;
 }
 
 .course-summary h3 {
+    margin: 0;
     font-size: 14px;
 }
 
 .course-summary p {
-    margin-top: 6px;
-    color: #89859b;
+    margin: 6px 0 0;
+    color: var(--muted);
     font-size: 12px;
     line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
 .outline-button {
-    display: inline-block;
-    flex-shrink: 0;
-    margin-left: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+    max-width: 100%;
     padding: 10px 15px;
 
-    border: 1px solid #d8c8f5;
+    border: 1px solid #d8c9f5;
     border-radius: 8px;
+    background: #ffffff;
+    color: var(--purple);
 
-    color: #56309d;
-    background-color: #ffffff;
     font-size: 11px;
-    font-weight: bold;
+    font-weight: 700;
     text-align: center;
 }
 
 .outline-button:hover {
-    background-color: #f0e9ff;
+    background: var(--purple-light);
 }
 
-/* ==========================================
-   FOOTER
-   ========================================== */
+/* ================= FOOTER ================= */
 
 .dashboard-footer {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
-    margin-top: 33px;
-    padding: 19px 0 5px;
+    flex-wrap: wrap;
+    gap: 8px;
 
-    border-top: 1px solid #eeeaf5;
-    color: #89859b;
-    font-size: 10px;
+    margin-top: 32px;
+    padding: 20px 0 8px;
+
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
 }
 
-.dashboard-footer span:first-child {
-    color: #7848d8;
-    font-weight: bold;
-}
+/* ================= LAPTOPS ================= */
 
-/* ==========================================
-   TABLET RESPONSIVE DESIGN
-   ========================================== */
-
-@media screen and (max-width: 1150px) {
+@media (max-width: 1250px) {
     .sidebar {
-        width: 220px;
-        min-width: 220px;
+        flex-basis: 225px;
+        width: 225px;
+        min-width: 225px;
+        padding: 24px 14px 18px;
     }
 
     .main-content {
-        padding: 27px 24px;
+        padding: 26px;
     }
 
-    .welcome-banner {
-        min-height: 290px;
-        padding: 30px;
-        background-position: center center;
+    .overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .welcome-copy {
-        width: 65%;
-    }
-
-    .overview-card {
-        flex-basis: 40%;
-    }
-
-    .quick-card {
-        flex-basis: 100%;
+    .quick-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-/* ==========================================
-   MOBILE RESPONSIVE DESIGN
-   ========================================== */
+/* ================= TABLETS AND PHONES ================= */
 
-@media screen and (max-width: 700px) {
+@media (max-width: 760px) {
     .app-layout {
         display: block;
+        width: 100%;
+        min-width: 0;
     }
 
     .sidebar {
         position: sticky;
         top: 0;
+        align-self: auto;
         z-index: 1000;
+
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: center;
+        align-content: start;
+        gap: 8px 6px;
 
         width: 100%;
         min-width: 0;
         height: auto;
-        max-height: 100vh;
-        overflow-y: auto;
-        padding: 14px 15px;
+        max-height: none;
+        overflow: visible;
+
+        padding: 12px 12px 13px;
     }
 
-    .student-mini-profile {
-        display: none;
+    .brand {
+        grid-column: 1 / -1;
+        min-width: 0;
+        padding: 0 4px;
+        font-size: clamp(19px, 4vw, 23px);
+    }
+
+    .brand-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        margin-right: 9px;
+    }
+
+    .student-mini-profile,
+    .sidebar-info {
+        display: none !important;
     }
 
     .nav-label {
-        margin: 13px 8px 7px;
+        grid-column: 1 / -1;
+        margin: 2px 3px 0;
+        font-size: 9px;
     }
 
-    .sidebar-nav {
-        flex-direction: row;
-        gap: 5px;
+    /* Flatten the existing navigation wrappers so all three
+       actions occupy one consistent mobile navigation row. */
+    .sidebar-nav,
+    .sidebar-bottom,
+    #logoutForm {
+        display: contents;
     }
 
-    .nav-item {
-        flex: 1;
-        justify-content: center;
-        padding: 10px 7px;
-        margin: 2px;
+    #logoutForm input[type="hidden"] {
+        display: none !important;
     }
 
-    .sidebar-bottom {
-        margin-top: 5px;
-    }
-
-    .sidebar-info {
-        display: none;
-    }
-
+    .sidebar-nav .nav-item,
+    .sidebar-bottom .nav-item,
     .logout-item {
-        margin-top: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        width: 100%;
+        min-width: 0;
+        min-height: 42px;
+        margin: 0;
+        padding: 8px 2px;
+
+        border-radius: 9px;
+        font-size: clamp(10px, 2.7vw, 12px);
+        line-height: 1.2;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .nav-icon {
+        flex: 0 0 auto;
+        width: auto;
+        font-size: 15px;
     }
 
     .main-content {
-        padding: 22px 15px;
+        width: 100%;
+        min-width: 0;
+        padding: clamp(16px, 4vw, 24px);
     }
 
     .topbar {
-        align-items: flex-start;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
     }
 
     .topbar h1 {
-        font-size: 23px;
+        font-size: clamp(23px, 5.5vw, 28px);
     }
 
     .account-chip {
-        padding: 5px;
+        padding: 6px 9px;
+        gap: 7px;
     }
 
-    .account-arrow,
-    .account-text span {
+    .account-avatar {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+
+    .account-arrow {
         display: none;
     }
 
     .welcome-banner {
-        min-height: 320px;
-        padding: 26px 23px;
-        background-position: center center;
-        border-radius: 14px;
+        min-height: clamp(300px, 74vw, 370px);
+        padding: clamp(19px, 5vw, 28px);
+        border-radius: 15px;
+
+        background-position: 63% center;
+        background-image:
+            linear-gradient(
+                90deg,
+                rgba(24,12,56,.72) 0%,
+                rgba(24,12,56,.48) 68%,
+                rgba(24,12,56,.22) 100%
+            ),
+            url("/images/studenthub-welcome.png");
     }
 
     .welcome-copy {
         width: 100%;
-        max-width: 100%;
-    }
-
-    .welcome-copy h2 {
-        font-size: 29px;
-    }
-
-    .welcome-copy p {
-        max-width: 290px;
-        font-size: 12px;
+        max-width: 430px;
     }
 
     .welcome-tag {
         font-size: 9px;
+        letter-spacing: 1.25px;
     }
 
-    .section-heading {
-        align-items: flex-start;
+    .welcome-copy h2 {
+        margin-top: 11px;
+        font-size: clamp(25px, 6.7vw, 34px);
     }
 
-    .section-note {
-        display: none;
+    .welcome-copy p {
+        margin-top: 12px;
+        font-size: clamp(12px, 3vw, 14px);
+        line-height: 1.65;
     }
 
-    .overview-grid,
+    .banner-button {
+        margin-top: 16px;
+        padding: 11px 14px;
+        gap: 8px;
+    }
+
+    .overview-section,
+    .quick-section,
+    .courses-section {
+        margin-top: 26px;
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .overview-card {
+        gap: 10px;
+        padding: 14px 12px;
+    }
+
+    .overview-icon {
+        width: 36px;
+        height: 36px;
+        flex-basis: 36px;
+        font-size: 18px;
+    }
+
+    .overview-card strong {
+        font-size: 13px;
+    }
+
     .quick-grid {
-        display: block;
-        margin: 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 11px;
     }
 
-    .overview-card,
     .quick-card {
-        margin: 12px 0;
+        gap: 10px;
+        padding: 17px 14px;
+    }
+
+    .quick-icon {
+        width: 35px;
+        height: 35px;
+        flex-basis: 35px;
+        font-size: 19px;
     }
 
     .course-summary {
-        flex-wrap: wrap;
         align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 17px;
     }
 
     .course-summary-content {
-        flex-basis: calc(100% - 70px);
+        flex: 1 1 170px;
     }
 
     .outline-button {
-        margin: 17px 0 0;
+        width: 100%;
+        margin-top: 3px;
     }
 
     .dashboard-footer {
         display: block;
+        margin-top: 24px;
     }
 
     .dashboard-footer span {
@@ -889,20 +1035,74 @@ button {
     }
 }
 
-/* ==========================================
-   ACCESSIBILITY
-   ========================================== */
+/* ================= SMALL PHONES ================= */
 
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
+@media (max-width: 430px) {
+    .sidebar {
+        gap: 7px 4px;
+        padding: 10px 8px 11px;
     }
 
+    .brand {
+        font-size: 19px;
+    }
+
+    .nav-item {
+        gap: 3px;
+        padding: 8px 1px;
+        font-size: 10px !important;
+    }
+
+    .nav-icon {
+        font-size: 14px;
+    }
+
+    .main-content {
+        padding: 16px 12px 24px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+    }
+
+    .account-chip {
+        max-width: 48%;
+    }
+
+    .overview-grid,
+    .quick-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .overview-card {
+        padding: 15px;
+    }
+
+    .welcome-banner {
+        min-height: 310px;
+        padding: 19px 15px;
+        background-position: 65% center;
+    }
+
+    .welcome-copy h2 {
+        font-size: clamp(25px, 7.5vw, 31px);
+    }
+
+    .section-heading h2 {
+        font-size: 20px;
+    }
+
+    .course-summary {
+        padding: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
     }
 }
