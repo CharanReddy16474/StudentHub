@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         style.id = "studentHubResponsiveStyles";
 
         style.textContent = `
+		/* Remove Welcome Art decorations on all screen sizes */
+		.welcome-banner .welcome-art {
+		    display: none !important;
+		}
 
             /* Hamburger button */
 
