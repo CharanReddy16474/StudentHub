@@ -1,4 +1,12 @@
 
+## 🚀 Live Demo
+
+**Live Application:** https://studenthub-tu6p.onrender.com
+
+## 💻 Source Code
+
+**GitHub Repository:** https://github.com/CharanReddy16474/StudentHub
+
 # StudentHub — Student Management Portal
 
 StudentHub is a full-stack student portal built using Java, Spring Boot, MySQL, HTML, CSS, and JavaScript. It allows students to register, securely log in, manage their profiles, change passwords, and manage their course enrollments through a simple, responsive interface.
